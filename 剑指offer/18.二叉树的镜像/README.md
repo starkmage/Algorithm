@@ -28,6 +28,7 @@
 
 递归
 
+``` JS
 /* function TreeNode(x) {
     this.val = x;
     this.left = null;
@@ -49,4 +50,4 @@ function Mirror(root)
     Mirror(root.left);
     Mirror(root.right);
 }
-
+```
