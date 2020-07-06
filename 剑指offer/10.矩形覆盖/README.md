@@ -27,3 +27,20 @@ function rectCover(number)
     }
 }
 ```
+
+---
+
+* 数组方法（推荐）
+
+``` JS
+function rectCover(number)
+{
+    // write code here
+    if(number <= 0) return 0;
+    let fib = [1, 2];
+    for(let i = 2; i <= number; i++) {
+        fib.push(fib[i - 1] + fib[i - 2]);
+    }
+    return fib[number - 1];
+}
+```
