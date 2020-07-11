@@ -28,6 +28,6 @@ function GetUglyNumber_Solution(index)
         if(uglyNum[i] === uglyNum[t3] * 3) t3++;
         if(uglyNum[i] === uglyNum[t5] * 5) t5++;
     }
-    return uglyNum[index-1]
+    return uglyNum[index-1];
 }
 ```
