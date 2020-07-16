@@ -42,7 +42,7 @@ function printMatrix(matrix)
         for(let j = w-m-2; j > m && l-1-m > m; j--) {
             res.push(matrix[j][m])
         }
-    。
+    
     return res;
 }
 ```
