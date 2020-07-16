@@ -57,6 +57,7 @@ function FindKthToTail(head, k)
     let length = 1;
     let current = head;
     let res = null;
+    //res比current慢了一位，遍历条件应该为current !== null
     while(current !== null) {
         current = current.next;
         if(length >= k) {
