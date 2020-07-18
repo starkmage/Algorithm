@@ -16,3 +16,7 @@ function replaceSpace(str)
     // write code here
     return str.replace(/\s/g, "%20");
 }
+
+* 补充
+
+因为JS中是不能用str[i]对字符串赋值的，所以逆向遍历的方法，暂时在JS中没想到应用方法。
