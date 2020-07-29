@@ -40,7 +40,7 @@ function matchHelp(s, i, pattern, j) {
         //3.2.1如果匹配上了
         if (i !== pattern.length && (s[i] === pattern[j] || pattern[j] === '.')) {
             return matchHelp(s, i + 1, pattern, j) ||   //可能s接下来若干个是重复字符串
-                matchHelp(s, i, pattern, j + 2) ||  //
+                matchHelp(s, i, pattern, j + 2) ||  //相当于x*被忽略
                 matchHelp(s, i + 1, pattern, j + 2) //可能*是1
         } 
         //3.2.2不匹配，*就是0，继续和j+2对比
