@@ -24,7 +24,7 @@ function GetLeastNumbers_Solution(input, k)
 
 * 思路2
 
-把input的前K个数建立一个大顶堆，从第K个数开始，和大顶堆的最大值进行比较，若比最大值小，交换两个数的位置，重新构建大顶堆，最终大顶堆就是最小的K个数
+把input的前K个数建立一个大顶堆，从第K个数开始，和大顶堆的最大值进行比较，若比最大值小，交换两个数的位置，重新构建大顶堆，最终大顶堆就是最小的K个数，时间复杂度`O(nlogK)`
 
 ``` JS
 function GetLeastNumbers_Solution(input, k) {
