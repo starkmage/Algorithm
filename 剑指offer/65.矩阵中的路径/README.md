@@ -29,3 +29,43 @@
 递归不断寻找四个方向是否满足条件，满足条件再忘更深层递归，不满足向上回溯。
 
 如果回溯到最外层，则当前字符匹配失败，将当前字符标记为未走。
+
+``` js
+function hasPath(matrix, rows, cols, path) {
+    // write code here
+    //创建标记是否访问过的标识符矩阵
+    let flag = new Array(matrix.length).fill(false)
+    for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < cols; j++) {
+            if (hasPathHelp(matrix, rows, cols, path, i, j, flag, 0)) return true
+        }
+    }
+    return false
+}
+
+function hasPathHelp(matrix, rows, cols, path, i, j, flag, k) {
+    //矩阵中字符的索引
+    const index = i * cols + j
+    //递归终止条件
+    if (i < 0 || j < 0 || i >= rows || j >= cols || matrix[index] !== path[k] || flag[index]) {
+        return false
+    }
+
+    //成功匹配所有字符的条件
+    if (k === path.length - 1) {
+        return true
+    }
+
+    flag[index] = true
+    
+    if (hasPathHelp(matrix, rows, cols, path, i + 1, j, flag, k + 1) ||
+        hasPathHelp(matrix, rows, cols, path, i, j + 1, flag, k + 1) ||
+        hasPathHelp(matrix, rows, cols, path, i - 1, j, flag, k + 1) ||
+        hasPathHelp(matrix, rows, cols, path, i, j - 1, flag, k + 1)) {
+        return true
+    }
+    
+    flag[index] = false
+    return false
+}
+```
