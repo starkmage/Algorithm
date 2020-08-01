@@ -14,6 +14,8 @@
 
 [4.重建二叉树](./剑指offer/4.重建二叉树/README.md)
 
+[5.用两个栈实现队列](./剑指offer/5.用两个栈实现队列/README.md)
+
 [7.斐波那契数列](./剑指offer/7.斐波那契数列/README.md)
 
 [8.跳台阶](./剑指offer/8.跳台阶/README.md)
