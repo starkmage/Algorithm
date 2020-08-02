@@ -26,7 +26,7 @@
 
 * 思路
 
-递归
+经典递归
 
 ``` JS
 /* function TreeNode(x) {
