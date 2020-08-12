@@ -20,4 +20,26 @@
 
 1. 注意压入temp的时候，深拷贝，否则后续temp的变化影响result内的数据
 
-2. 注意while和if的先后顺序
+2. 注意while和if的先后顺序，因为当可能去掉前面几个数据时，剩下数据的和正好等于sum
+
+``` js
+function FindContinuousSequence(sum)
+{
+    // write code here
+  if (sum <= 2) return []
+  let temp = []
+  let total = 0
+  let result = []
+  for (let i = 1; i <= Math.ceil(sum/2); i++) {
+    total += i
+    temp.push(i)
+    while (total > sum) {
+      total -= temp.shift()
+    }
+    if (total === sum) {
+      result.push([...temp])
+    }
+  }
+  return result
+}
+```
