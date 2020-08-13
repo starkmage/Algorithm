@@ -29,3 +29,14 @@ function ReverseSentence(str)
     return res;
 }
 ```
+
+其实用内置函数，可以更简洁的写出答案
+
+``` js
+function ReverseSentence(str)
+{
+    // write code here
+  if (!str) return ''
+  return str.split(' ').reverse().join(' ')
+} 
+```
