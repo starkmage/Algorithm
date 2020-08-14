@@ -62,6 +62,8 @@ function MoreThanHalfNum_Solution(numbers)
 }
 ```
 
+---
+
 * 候选法
 
 最优方法，思路较复杂，时间复杂度`O(nlogn)`，空间复杂度`O(1)`
