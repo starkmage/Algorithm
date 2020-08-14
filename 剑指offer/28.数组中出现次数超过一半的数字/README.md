@@ -83,17 +83,17 @@ function MoreThanHalfNum_Solution(numbers)
   if (numbers.length === 0) return 0
   let flag = numbers[0]
   let count = 1
-  numbers.forEach(value => {
-    if (value !== flag) {
+  for (let i = 1; i < numbers.length; i++) {
+    if (numbers[i] !== flag) {
       count--
       if (count === 0) {
-        flag = value
+        flag = numbers[i]
         count = 1
       }
     } else {
       count++
     }
-  })
+  }
 
   count = 0
   numbers.forEach(value => {
