@@ -29,7 +29,7 @@ function matchHelp(s, i, pattern, j) {
     //3.1如果pattern的下一个字符不是*
     if (pattern[j + 1] !== '*') {
         //3.1.1不匹配，直接false
-        if (i !== s.length && s[i] !== pattern[j] && pattern[j] !== '.') {
+        if (i < s.length && s[i] !== pattern[j] && pattern[j] !== '.') {
             return false
         } 
         //3.1.2匹配，常规情况递归下一个
@@ -40,10 +40,9 @@ function matchHelp(s, i, pattern, j) {
     //3.2如果pattern的下一个字符是*
     else {
         //3.2.1如果匹配上了
-        if (i !== pattern.length && (s[i] === pattern[j] || pattern[j] === '.')) {
+        if (i < s.length && (s[i] === pattern[j] || pattern[j] === '.')) {
             return matchHelp(s, i + 1, pattern, j) ||   //可能s接下来若干个是重复字符串
-                matchHelp(s, i, pattern, j + 2) ||  //相当于x*被忽略
-                matchHelp(s, i + 1, pattern, j + 2) //可能*是1
+                matchHelp(s, i, pattern, j + 2)  //相当于x*被忽略
         } 
         //3.2.2不匹配，*就是0，继续和j+2对比
         else {
