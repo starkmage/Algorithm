@@ -22,6 +22,10 @@
 
 [20.有效的括号](./LeetCode/20.有效的括号/README.md)
 
+[21.合并两个有序链表](./LeetCode/21.合并两个有序链表/README.md)
+
+[22.括号生成](./LeetCode/22.括号生成/README.md)
+
 [647.回文串](./LeetCode/647.回文串/README.md)
 
 [739.每日温度](./LeetCode/739.每日温度/README.md)
