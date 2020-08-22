@@ -26,6 +26,12 @@
 
 [22.括号生成](./LeetCode/22.括号生成/README.md)
 
+[23.合并K个升序链表](./LeetCode/23.合并K个升序链表/README.md)
+
+[31.下一个队列](./LeetCode/31.下一个队列/README.md)
+
+[32.最长有效括号](./LeetCode/32.最长有效括号/README.md)
+
 [647.回文串](./LeetCode/647.回文串/README.md)
 
 [739.每日温度](./LeetCode/739.每日温度/README.md)
