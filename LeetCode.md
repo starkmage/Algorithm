@@ -32,6 +32,8 @@
 
 [32.最长有效括号](./LeetCode/32.最长有效括号/README.md)
 
+[33.搜索旋转排序数组](./LeetCode/33.搜索旋转排序数组/README.md)
+
 [647.回文串](./LeetCode/647.回文串/README.md)
 
 [739.每日温度](./LeetCode/739.每日温度/README.md)
