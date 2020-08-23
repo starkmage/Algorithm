@@ -36,6 +36,8 @@
 
 [34.在排序数组中查找元素的第一个和最后一个位置](./LeetCode/34.在排序数组中查找元素的第一个和最后一个位置/README.md)
 
+[39.组合总和](./LeetCode/39.组合总和/README.md)
+
 [647.回文串](./LeetCode/647.回文串/README.md)
 
 [739.每日温度](./LeetCode/739.每日温度/README.md)
