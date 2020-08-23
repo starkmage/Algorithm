@@ -41,12 +41,12 @@ var search = function(nums, target) {
   let left = 0
   let right = nums.length - 1
   while(left < right) {
-    let mid = left + Math.floor((right - left + 1)/2)
+    let mid = left + Math.floor((right - left)/2)
     if (nums[mid] === target) {
       return mid
     } else {
       //1. 如果mid在前半升序段
-      if (nums[mid] > nums[0]) {
+      if (nums[mid] >= nums[0]) {
         //1.1 target在left和mid之间，包括left
         if (nums[mid] > target && nums[left] <= target) {
           right = mid - 1
