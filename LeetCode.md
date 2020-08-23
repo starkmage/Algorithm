@@ -38,6 +38,8 @@
 
 [39.组合总和](./LeetCode/39.组合总和/README.md)
 
+[42.接雨水](./LeetCode/42.接雨水/README.md)
+
 [647.回文串](./LeetCode/647.回文串/README.md)
 
 [739.每日温度](./LeetCode/739.每日温度/README.md)
