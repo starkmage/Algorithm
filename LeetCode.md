@@ -48,6 +48,8 @@
 
 [53.最大子序和](./LeetCode/53.最大子序和/README.md)
 
+[55.跳跃游戏](./LeetCode/55.跳跃游戏/README.md)
+
 [647.回文串](./LeetCode/647.回文串/README.md)
 
 [739.每日温度](./LeetCode/739.每日温度/README.md)
