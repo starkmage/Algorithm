@@ -56,6 +56,7 @@ exection -> execution (插入 'u')
 var minDistance = function(word1, word2) {
   let m = word1.length
   let n = word2.length
+  //注意深拷贝的问题
   let dp = Array(m+1).fill(0).map(() => Array(n+1).fill(0))
   //对于n === 0的情况，即word2长度为0，变换次数就等于word1的长度，因为删除m次即可
   for (let i = 0; i <= m; i++) {
