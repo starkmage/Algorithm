@@ -47,8 +47,8 @@ var uniquePaths = function(m, n) {
   //生成一个 m X n 全为1的二维数组
   //因为第一行和第一列的走法只有1种
   //初始为1比较方便
-  let item = Array(n).fill(1)
-  let dp = Array(m).fill([...item])
+  //注意赋值的时候深拷贝问题
+  let dp = Array(m).fill(0).map(() => Array(n).fill(1))
   for (let i = 1; i < m; i++) {
     for (let j = 1; j < n; j++) {
       dp[i][j] = dp[i-1][j] + dp[i][j-1]
