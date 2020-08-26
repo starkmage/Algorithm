@@ -58,6 +58,8 @@
 
 [70.爬楼梯](./LeetCode/70.爬楼梯/README.md)
 
+[72.编辑距离](./LeetCode/72.编辑距离/README.md)
+
 [647.回文串](./LeetCode/647.回文串/README.md)
 
 [739.每日温度](./LeetCode/739.每日温度/README.md)
