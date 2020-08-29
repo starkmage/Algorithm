@@ -74,6 +74,8 @@
 
 [94.二叉树的中序遍历](./LeetCode/94.二叉树的中序遍历/README.md)
 
+[96.不同的二叉搜索树](./LeetCode/96.不同的二叉搜索树/README.md)
+
 [647.回文串](./LeetCode/647.回文串/README.md)
 
 [739.每日温度](./LeetCode/739.每日温度/README.md)
