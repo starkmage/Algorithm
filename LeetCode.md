@@ -86,6 +86,8 @@
 
 [105.从前序与中序遍历序列构造二叉树](./LeetCode/105.从前序与中序遍历序列构造二叉树/README.md)
 
+[114.二叉树展开为链表](./LeetCode/114.二叉树展开为链表/README.md)
+
 [647.回文串](./LeetCode/647.回文串/README.md)
 
 [739.每日温度](./LeetCode/739.每日温度/README.md)
