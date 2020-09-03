@@ -35,12 +35,12 @@ function EntryNodeOfLoop(pHead)
   if (pHead === null || pHead.next === null) return null
   let slow = pHead
   let fast = pHead
-  while (fast.next !== null) {
+  while (fast && fast.next !== null) {
     slow = slow.next
     fast = fast.next.next
     if (slow === fast) break
   }
-  if (fast.next === null) return null
+  if (fast === null && fast.next === null) return null
   slow = pHead
   while (slow !== fast) {
     slow = slow.next
