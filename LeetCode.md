@@ -104,6 +104,8 @@
 
 [148.排序链表](./LeetCode/148.排序链表/README.md)
 
+[152.乘积最大子数组](./LeetCode/152.乘积最大子数组/README.md)
+
 [647.回文串](./LeetCode/647.回文串/README.md)
 
 [739.每日温度](./LeetCode/739.每日温度/README.md)
