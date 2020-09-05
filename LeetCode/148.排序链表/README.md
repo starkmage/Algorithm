@@ -23,17 +23,6 @@
 注意新知识点，如何利用快慢指针找到链表的中点
 
 ``` js
-/**
- * Definition for singly-linked list.
- * function ListNode(val) {
- *     this.val = val;
- *     this.next = null;
- * }
- */
-/**
- * @param {ListNode} head
- * @return {ListNode}
- */
 var sortList = function(head) {
   if (head === null) return null
   return mergeSort(head)
