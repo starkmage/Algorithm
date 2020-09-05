@@ -102,7 +102,7 @@
 
 [142.环形链表II](./LeetCode/142.环形链表II/README.md)
 
-[148.链表排序](./LeetCode/148.链表排序/README.md)
+[148.排序链表](./LeetCode/148.排序链表/README.md)
 
 [647.回文串](./LeetCode/647.回文串/README.md)
 
