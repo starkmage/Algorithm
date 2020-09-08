@@ -110,7 +110,9 @@
 
 [160.相交链表](./LeetCode/160.相交链表/README.md)
 
-[169.候选法](./LeetCode/169.候选法/README.md)
+[169.多数元素](./LeetCode/169.多数元素/README.md)
+
+[198.打家劫舍](./LeetCode/198.打家劫舍/README.md)
 
 [647.回文串](./LeetCode/647.回文串/README.md)
 
