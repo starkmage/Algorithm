@@ -31,17 +31,6 @@
 和“剑指offer-58.对称的二叉树”一模一样
 
 ``` js
-/**
- * Definition for a binary tree node.
- * function TreeNode(val) {
- *     this.val = val;
- *     this.left = this.right = null;
- * }
- */
-/**
- * @param {TreeNode} root
- * @return {boolean}
- */
 var isSymmetric = function(root) {
   if (root === null) return true
   return help(root.left, root.right)
@@ -75,4 +64,3 @@ var isSymmetric = function(root) {
   return true
 }
 ```
-};
