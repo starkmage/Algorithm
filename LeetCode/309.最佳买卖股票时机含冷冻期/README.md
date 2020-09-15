@@ -26,9 +26,9 @@
 var maxProfit = function(prices) {
   let len = prices.length
   if (len < 2) return 0
-  // 卖出股票的状态下拥有的钱，即保持不持股 或者 今天刚把股票卖出
+  // 卖出股票的状态下赚的钱，即保持不持股 或者 今天刚把股票卖出
   const sell = [0]
-  // 买入股票的状态拥有的钱，即保持拥有股票 或者 今天刚买入股票
+  // 买入股票的状态赚的钱，即保持拥有股票 或者 今天刚买入股票
   const buy = [-prices[0]]
   // 冷冻期拥有的钱
   const cooled = [0]
