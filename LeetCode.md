@@ -142,6 +142,8 @@
 
 [287.寻找重复数](./LeetCode/287.寻找重复数/README.md)
 
+[297.二叉树的序列化与反序列化](./LeetCode/297.二叉树的序列化与反序列化/README.md)
+
 [647.回文串](./LeetCode/647.回文串/README.md)
 
 [739.每日温度](./LeetCode/739.每日温度/README.md)
