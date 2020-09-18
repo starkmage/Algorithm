@@ -158,6 +158,8 @@
 
 [338.比特位计数](./LeetCode/338.比特位计数/README.md)
 
+[347.前K个高频元素](./LeetCode/347.前K个高频元素/README.md)
+
 [647.回文串](./LeetCode/647.回文串/README.md)
 
 [739.每日温度](./LeetCode/739.每日温度/README.md)
