@@ -164,6 +164,8 @@
 
 [406.根据身高重建队列](./LeetCode/406.根据身高重建队列/README.md)
 
+[416.分割等和子集](./LeetCode/416.分割等和子集/README.md)
+
 [647.回文串](./LeetCode/647.回文串/README.md)
 
 [739.每日温度](./LeetCode/739.每日温度/README.md)
