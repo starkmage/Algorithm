@@ -162,6 +162,8 @@
 
 [394.字符串解码](./LeetCode/394.字符串解码/README.md)
 
+[406.根据身高重建队列](./LeetCode/406.根据身高重建队列/README.md)
+
 [647.回文串](./LeetCode/647.回文串/README.md)
 
 [739.每日温度](./LeetCode/739.每日温度/README.md)
