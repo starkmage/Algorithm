@@ -160,6 +160,8 @@
 
 [347.前K个高频元素](./LeetCode/347.前K个高频元素/README.md)
 
+[394.字符串解码](./LeetCode/394.字符串解码/README.md)
+
 [647.回文串](./LeetCode/647.回文串/README.md)
 
 [739.每日温度](./LeetCode/739.每日温度/README.md)
