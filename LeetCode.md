@@ -178,6 +178,8 @@
 
 [494.目标和](./LeetCode/494.目标和/README.md)
 
+[538.把二叉搜索树转换为累加树](./LeetCode/538.把二叉搜索树转换为累加树/README.md)
+
 [543.二叉树的直径](./LeetCode/543.二叉树的直径/README.md)
 
 [560.和为K的子数组](./LeetCode/560.和为K的子数组/README.md)
