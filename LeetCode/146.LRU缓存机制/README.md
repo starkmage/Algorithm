@@ -30,7 +30,7 @@ cache.get(4);       // 返回  4
 
 #### 思路
 
-因为 Vue 中的 keep-alive 用到的就是 LRU 缓存机制，所以练习了一下这道题
+因为 Vue 中的 keep-alive 用到的就是 LRU 缓存机制，所以练习了一下这道题，参考[这里的思路](https://leetcode-cn.com/problems/lru-cache/solution/bu-yong-yu-yan-nei-jian-de-map-gua-dang-feng-zhuan/)
 
 不过 Vue 中好像没用到双向链表，用的是数组 keys 存储 key，然后同样的思路，调整 key 在数组 keys 的位置
 
