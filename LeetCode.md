@@ -102,6 +102,8 @@
 
 [142.环形链表II](./LeetCode/142.环形链表II/README.md)
 
+[146.LRU缓存机制](./LeetCode/146.LRU缓存机制/README.md)
+
 [148.排序链表](./LeetCode/148.排序链表/README.md)
 
 [152.乘积最大子数组](./LeetCode/152.乘积最大子数组/README.md)
