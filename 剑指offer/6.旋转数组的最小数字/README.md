@@ -31,7 +31,6 @@ NOTE：给出的所有元素都大于0，若数组大小为0，请返回0。
 ``` js
 function minNumberInRotateArray(rotateArray)
 {
-    // write code here
     if (rotateArray.length === 0) return 0
     let start = 0
     let end = rotateArray.length - 1
