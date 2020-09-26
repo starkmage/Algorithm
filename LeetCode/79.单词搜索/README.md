@@ -47,7 +47,9 @@ var exist = function(board, word) {
   //不确定是从哪个地方开始，所以需要遍历
   for (let i = 0; i < m; i++) {
     for (let j = 0; j < n; j++) {
-      if(help(board, m, n, i, j, word, 0, flag)) return true
+      if (board[i][j] === word[0]) {
+        if(help(board, m, n, i, j, word, 0, flag)) return true
+      }
     }
   }
   return false
