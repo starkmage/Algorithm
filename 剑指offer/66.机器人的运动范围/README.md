@@ -38,6 +38,8 @@ function movingCount(threshold, rows, cols)
 function moveCount(threshold, rows, cols, flag, i, j) {
   //递归终止条件：1.越界 2.走过这个格子
   if (i < 0 || i >= rows || j < 0 || j >= cols || flag[i][j]) return 0
+  //标记这个格子就走过了
+  flag[i][j] = true
   //求这个格子i,j的数位之和
   let sum = 0
   let str = i + '' + j
@@ -46,8 +48,6 @@ function moveCount(threshold, rows, cols, flag, i, j) {
   }
   //递归终止条件：3.数位和超了
   if (sum > threshold) return 0
-  //既然满足条件，那这个格子就走过了
-  flag[i][j] = true
   //继续递归
   return 1 + moveCount(threshold, rows, cols, flag, i+1, j) + 
     moveCount(threshold, rows, cols, flag, i-1, j) + 
