@@ -47,7 +47,7 @@ function Power(base, exponent)
 }
 ```
 
-###$ 递归
+#### 递归
 
 ``` js
 var myPow = function(x, n) {
