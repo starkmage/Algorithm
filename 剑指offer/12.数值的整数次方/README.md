@@ -8,7 +8,7 @@
 
 ---
 
-* 暴力
+#### 暴力
 
 面试的时候敢不敢这么写是个问题
 
@@ -20,7 +20,7 @@ function Power(base, exponent)
 }
 ```
 
-* 常规累乘
+#### 常规累乘
 
 时间复杂度为`O(n)`，虽然不是最优解法（最优解法是递归，O(logn)），但是最好理解
 
@@ -45,4 +45,18 @@ function Power(base, exponent)
     return 1/res
   }
 }
+```
+
+###$ 递归
+
+``` js
+var myPow = function(x, n) {
+  if (n === 0) return 1
+  if (x === 0) return 0
+  if (n < 0) {
+    x = 1 / x
+    n = -n
+  }
+  return n % 2 === 0 ? myPow(x * x, n / 2) : myPow(x * x, (n - 1) / 2) * x
+};
 ```
