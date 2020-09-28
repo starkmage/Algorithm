@@ -71,7 +71,8 @@ function HasSubtree(pRoot1, pRoot2)
 
 
 function SameTree(node1, node2) {
-    //注意，是子结构，不一定是子树，所以node2为空时，node1可以不为空
+    // 注意，是子结构，不一定是子树，所以node2为空时，node1可以不为空
+    // 这两行代码的顺序很重要
     if(node2 === null) return true;
     if(node1 === null) return false;
     if(node1.val !== node2.val) {
