@@ -13,26 +13,16 @@
 ---
 
 ``` JS
-function IsPopOrder(pushV, popV)
-{
-    // write code here
-    if(pushV.length === 0 || popV.length === 0) return false;
-    let stack = [];
-    //对popV遍历
-    for(let i = 0; i < popV.length; i++) {
-        //在找到与popV[i]相同的之前，把pushV元素从前压入stack
-        while(pushV.length > 0 && popV[i] !== pushV[0]) {
-            stack.push(pushV.shift());
-        }
-        //1.popV[i]和即将要入栈的元素相等
-        if(pushV.length > 0 && popV[i] === pushV[0]) {
-            pushV.shift();
-        }
-        //2.popV[i]和刚刚入栈的元素相等
-        if(stack.length > 0 && popV[i] === stack[stack.length-1]) {
-            stack.pop();
-        }
+var validateStackSequences = function(pushed, popped) {
+  if (pushed.length !== popped.length) return false
+  const stack = []
+  while (pushed.length) {
+    stack.push(pushed.shift())
+    while (stack.length && stack[stack.length - 1] === popped[0]) {
+      stack.pop()
+      popped.shift()
     }
-    return stack.length === 0;
-}
+  }
+  return stack.length === 0
+};
 ```
