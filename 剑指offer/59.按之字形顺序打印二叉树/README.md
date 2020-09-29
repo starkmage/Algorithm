@@ -13,34 +13,19 @@
 ---
 
 ``` JS
-/* function TreeNode(x) {
-    this.val = x;
-    this.left = null;
-    this.right = null;
-} */
+var levelOrder = function(root) {
+  if (root === null) return []
+  const res = []
+  help(root, res, 1)
+  return res
+};
 
-
-function Print(pRoot)
-{
-    // write code here
-    let queue = [];
-    preTraverse(pRoot, 1, queue);
-    for(let i = 0; i < queue.length; i++) {
-        if(i % 2 === 1) {
-            queue[i].reverse();
-        }
-    }
-    return queue;
-}
-
-function preTraverse(key, depth, queue) {
-    if(key === null) return;
-    
-    if(queue.length < depth) {
-        queue.push([]);
-    }
-    queue[depth - 1].push(key.val);
-    preTraverse(key.left, depth + 1, queue);
-    preTraverse(key.right, depth + 1, queue);
+function help(node, res, deep) {
+  if (node === null) return
+  if (deep > res.length) res.push([])
+  if (deep % 2 === 1) res[deep - 1].push(node.val)
+  else res[deep - 1].unshift(node.val)
+  help(node.left, res, deep + 1)
+  help(node.right, res, deep + 1)
 }
 ```
