@@ -10,39 +10,33 @@
 
 顺时针打印就是按圈数循环打印，一圈包含两行或者两列，在打印的时候会出现某一圈中只包含一行，要判断从左向右打印和从右向左打印的时候是否会出现重复打印，同样只包含一列时，要判断从上向下打印和从下向上打印的时候是否会出现重复打印的情况。
 
+2020年9月29日更新，之前的方法太绕了，现在更新一种更简单的思路。
+
 ---
 
 ``` JS
-function printMatrix(matrix)
-{
-    // write code here
-    if(matrix.length === 0 || !Array.isArray(matrix[0])) return matrix;
-    let res = [];
-    //矩阵的长宽
-    let l = matrix[0].length;
-    let w = matrix.length;
-    //圈数
-    let n = Math.ceil(Math.min(l, w) / 2);
-    for(let m = 0; m < n; m++) {
-        //从左上到右上
-        for(let i = m; i < l-m; i++) {
-            res.push(matrix[m][i]);
-        }
-        //从右上到右下
-        for(let j = m+1; j < w-m-1; j++) {
-            res.push(matrix[j][l-1-m]);
-        }
-        //从右下到左下
-        //w-1-m>m是保证与“从左上到右上”不是同一行
-        for(let i = l-m-1; i >= m && w-1-m > m; i--) {
-            res.push(matrix[w-m-1][i]);
-        }
-        //从左下到左上
-        //l-1-m>m是保证与“从右上到右下”不是同一列
-        for(let j = w-m-2; j > m && l-1-m > m; j--) {
-            res.push(matrix[j][m])
-        }
-    
-    return res;
-}
+var spiralOrder = function(matrix) {
+  if (matrix.length === 0) return []
+  let top = 0, bottom = matrix.length - 1
+  let left = 0, right = matrix[0].length - 1
+  const res = []
+  const size = matrix.length * matrix[0].length
+  while (res.length !== size) {
+    // 左到右
+    for (let j = left; j <= right; j++) res.push(matrix[top][j])
+    top++
+    // 上到下
+    for (let i = top; i <= bottom; i++) res.push(matrix[i][right])
+    right--
+    // 防止只剩一行或者一列出现重复
+    if (res.length === size) break
+    // 右到左
+    for (let j = right; j >= left; j--) res.push(matrix[bottom][j])
+    bottom--
+    // 下到上
+    for (let i = bottom; i >= top; i--) res.push(matrix[i][left])
+    left++
+  }
+  return res
+};
 ```
