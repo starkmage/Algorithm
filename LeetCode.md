@@ -8,7 +8,7 @@
 
 [4.寻找两个正序数组的中位数](./LeetCode/4.寻找两个正序数组的中位数/README.md)
 
-[5.最长回文串](./LeetCode/5.最长回文串/README.md)
+[5.最长回文子串](./LeetCode/5.最长回文子串/README.md)
 
 [10.正则表达式匹配](./LeetCode/10.正则表达式匹配/README.md)
 
