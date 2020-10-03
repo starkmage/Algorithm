@@ -10,54 +10,46 @@
 
 暴力解法行不通，会超时
 
-分治思想，归并排序类似，比归并排序要复杂，因为要统计次数
+分治思想，归并排序类似，比归并排序仅多了一行代码，因为要统计次数
 
 ``` JS
-let count = 0
+var reversePairs = function (nums) {
+  let count = 0
+  mergeSort(nums)
+  return count
 
-function InversePairs(data)
-{
-    // write code here
-    if(data.length < 2) return 0
-    mergeSort(data, 0, data.length-1)
-    return count%1000000007
-}
-
-function mergeSort(arr,start,end) {
-    if(start === end) return
-    let mid = Math.floor((start+end)/2)
-    mergeSort(arr,start,mid)
-    mergeSort(arr,mid+1,end)
-    merge(arr,start,mid,end)
-}
-
-function merge(arr,start,mid,end) {
-    let temp = []
-    let t = 0
-    let i = start
-    let j = mid+1
-    
-    while(i <= mid && j <= end) {
-        if(arr[i] <= arr[j]) {
-            temp[t++] = arr[i++]
-        } else {
-            temp[t++] = arr[j++]
-            count += mid-i+1
-        }
+  // 拆分
+  function mergeSort(nums) {
+    if (nums.length <= 1) return nums
+    let center = Math.floor(nums.length / 2)
+    let left = mergeSort(nums.slice(0, center))
+    let right = mergeSort(nums.slice(center))
+    return merge(left, right)
+  }
+  // 合并
+  function merge(left, right) {
+    const res = []
+    let i = 0, j = 0
+    while (i < left.length && j < right.length) {
+      if (left[i] <= right[j]) {
+        res.push(left[i])
+        i++
+      } else {
+        res.push(right[j])
+        j++
+        // 相对于归并排序，添加的唯一一行代码
+        count += left.length - i
+      }
     }
-    
-    while(i <= mid) {
-        temp[t++] = arr[i++]
+    while (i < left.length) {
+      res.push(left[i])
+      i++
     }
-    while(j <= end) {
-        temp[t++] = arr[j++]
+    while (j < right.length) {
+      res.push(right[j])
+      j++
     }
-    
-    //把临时数组的顺序还原给arr
-    let k = start
-    let m = 0
-    while(k <= end) {
-        arr[k++] = temp[m++]
-    }
-}
+    return res
+  }
+};
 ```
