@@ -34,3 +34,16 @@ function PrintMinNumber(numbers)
     return numbers.join('');
 }
 ```
+
+sort 方法
+
+``` js
+var minNumber = function(nums) {
+  nums.sort((a, b) => {
+    let s1 = a + '' + b
+    let s2 = b + '' + a
+    return s1 - s2
+  })
+  return nums.join('')
+};
+```
