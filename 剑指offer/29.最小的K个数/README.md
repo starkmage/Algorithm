@@ -6,7 +6,7 @@
 
 ---
 
-* 思路1
+* sort()
 
 全排序，然后取出前K个数，直接用JS的`sort()`，因为`sort()`的原理是插入排序和快速排序（数组长度在10以上时），所以可以认为时间复杂度为`O(nlog(n))`
 
@@ -22,7 +22,34 @@ function GetLeastNumbers_Solution(input, k)
 
 ---
 
-* 思路2
+* 快速排序
+
+``` js
+var getLeastNumbers = function(arr, k) {
+  if (arr.length < k) return arr
+  quickSort(arr, 0, arr.length - 1)
+  return arr.slice(0, k)
+};
+
+function quickSort(arr, left, right) {
+  if (left >= right) return
+  let temp = arr[left]
+  let i = left, j = right
+  while (left < right) {
+    while (left < right && temp <= arr[right]) right--
+    arr[left] = arr[right]
+    while (left < right && temp >= arr[left]) left++
+    arr[right] = arr[left]
+  }
+  arr[left] = temp
+  quickSort(arr, i, left - 1)
+  quickSort(arr, left + 1, j)
+}
+```
+
+---
+
+* 大顶堆
 
 把input的前K个数建立一个大顶堆，从第K个数开始，和大顶堆的最大值进行比较，若比最大值小，交换两个数的位置，重新构建大顶堆，最终大顶堆就是最小的K个数，时间复杂度`O(nlogK)`
 
