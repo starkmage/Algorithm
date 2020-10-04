@@ -10,6 +10,8 @@
 
 暴力迭代。
 
+已经在 LeetCode 239题中用了更好的思路。
+
 ``` JS
 function maxInWindows(num, size)
 {
