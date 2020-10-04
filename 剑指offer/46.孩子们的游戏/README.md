@@ -1,33 +1,49 @@
 ### 46.孩子们的游戏
 
 ---
+0,1,,n-1这n个数字排成一个圆圈，从数字0开始，每次从这个圆圈里删除第m个数字。求出这个圆圈里剩下的最后一个数字。
 
-每年六一儿童节,牛客都会准备一些小礼物去看望孤儿院的小朋友,今年亦是如此。HF作为牛客的资深元老,自然也准备了一些小游戏。其中,有个游戏是这样的:首先,让小朋友们围成一个大圈。然后,他随机指定一个数m,让编号为0的小朋友开始报数。每次喊到m-1的那个小朋友要出列唱首歌,然后可以在礼品箱中任意的挑选礼物,并且不再回到圈中,从他的下一个小朋友开始,继续0...m-1报数....这样下去....直到剩下最后一个小朋友,可以不用表演,并且拿到牛客名贵的“名侦探柯南”典藏版(名额有限哦!!^_^)。请你试着想下,哪个小朋友会得到这份礼品呢？(注：小朋友的编号是从0到n-1)）。
+例如，0、1、2、3、4这5个数字组成一个圆圈，从数字0开始每次删除第3个数字，则删除的前4个数字依次是2、0、4、1，因此最后剩下的数字是3。
 
-如果没有小朋友，请返回-1。
-
+示例 1：
+```
+输入: n = 5, m = 3
+输出: 3
+```
+示例 2：
+```
+输入: n = 10, m = 17
+输出: 2
+```
 ---
 
-* 思路
+#### 队列思路
 
 利用队列，先将所有小朋友压入队列，报完数的小朋友从队列出来，压入队尾，依次循环，而报数为m - 1的小朋友出队后不再进入队列，最终剩下的小朋友获胜。
 
 ---
 
 ``` JS
-function LastRemaining_Solution(n, m)
-{
-    // write code here
-    if(n <= 0 || m <= 0) {
-        return -1;
-    }
-    let queue = [...Array(n)].map((value, index) => index);
-    while(queue.length > 1) {
-        for(let i = 0; i < m - 1; i++) {
-            queue.push(queue.shift());
-        }
-        queue.shift();
-    }
-    return queue.shift();
-}
+var lastRemaining = function(n, m) {
+  let queue = Array(n).fill(0).map((val, index) => index)
+  while (queue.length > 1) {
+    for (let i = 1; i < m; i++) queue.push(queue.shift())
+    queue.shift()
+  }
+  return queue[0]
+};
+```
+
+#### 公式法
+
+上述思路时间复杂度为 `O(nm)` ，在数据非常大的时候，会超出时间限制，[参考这里](https://blog.csdn.net/u011500062/article/details/72855826)
+
+``` js
+var lastRemaining = function(n, m) {
+  let res = 0
+  for (let i = 2; i <= n; i++) {
+    res = (res + m) % i
+  }
+  return res
+};
 ```
