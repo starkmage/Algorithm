@@ -6,9 +6,9 @@
 
 ---
 
-* 思路
+#### 思路
 
-这里我采用的是数组迭代的方法，没有采用递归。
+数组迭代的方法
 
 ---
 
@@ -22,4 +22,12 @@ function Sum_Solution(n)
     
     return sum;
 }
+```
+
+#### 递归
+
+``` js
+var sumNums = function(n) {
+  return n && (n + sumNums(n - 1))
+};
 ```
