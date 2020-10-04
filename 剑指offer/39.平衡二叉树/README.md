@@ -8,13 +8,29 @@
 
 ---
 
-* 思路
+* 常规递归思路
 
-从下往上遍历，如果子树是平衡二叉树，则返回子树的高度；如果发现子树不是平衡二叉树，则直接停止遍历，这样至多只对每个结点访问一次。
+``` js
+var isBalanced = function(root) {
+  if (root === null) return true
+  if (Math.abs(getDepth(root.left) - getDepth(root.right)) <= 1) {
+    return isBalanced(root.left) && isBalanced(root.right)
+  } else {
+    return false
+  }
+};
+
+function getDepth(node) {
+  if (node === null) return 0
+  return 1 + Math.max(getDepth(node.left), getDepth(node.right))
+}
+```
 
 ---
 
 * 剪枝方法
+
+从下往上遍历，如果子树是平衡二叉树，则返回子树的高度；如果发现子树不是平衡二叉树，则直接停止遍历，这样至多只对每个结点访问一次。
 
 ``` JS
 /* function TreeNode(x) {
