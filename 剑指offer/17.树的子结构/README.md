@@ -8,77 +8,19 @@
 
 * 思路
 
-递归，下面两种完全一致，只不过第二种利用短路，代码更简洁。
+递归，利用短路
 
 ---
 
 ``` JS
-/* function TreeNode(x) {
-    this.val = x;
-    this.left = null;
-    this.right = null;
-} */
+var isSubStructure = function(A, B) {
+  if (A === null || B === null) return false
+  return help(A, B) || isSubStructure(A.left, B) || isSubStructure(A.right, B)
+};
 
-
-function HasSubtree(pRoot1, pRoot2)
-{
-    // write code here
-    let result = false;
-    if(pRoot1 !== null && pRoot2 !== null) {
-        if(pRoot1.val === pRoot2.val) {
-            result = SameTree(pRoot1, pRoot2);
-        }
-        if(!result) {
-            result = HasSubtree(pRoot1.left, pRoot2);
-        }
-        if(!result) {
-            result = HasSubtree(pRoot1.right, pRoot2);
-        }
-    }
-    return result;
-}
-
- 
-function SameTree(node1, node2) {
-    //注意，是子结构，不一定是子树，所以node2为空时，node1可以不为空
-    if(node2 === null) return true;
-    if(node1 === null) return false;
-    if(node1.val !== node2.val) {
-        return false;
-    } else {
-        return SameTree(node1.left, node2.left) && SameTree(node1.right, node2.right)
-    }
-}
-```
-
----
-
-``` JS
-/* function TreeNode(x) {
-    this.val = x;
-    this.left = null;
-    this.right = null;
-} */
-
-
-function HasSubtree(pRoot1, pRoot2)
-{
-    // write code here
-    if(pRoot1 === null || pRoot2 === null) return false;
-    
-    return SameTree(pRoot1, pRoot2) || HasSubtree(pRoot1.left, pRoot2) || HasSubtree(pRoot1.right, pRoot2);
-}
-
-
-function SameTree(node1, node2) {
-    // 注意，是子结构，不一定是子树，所以node2为空时，node1可以不为空
-    // 这两行代码的顺序很重要
-    if(node2 === null) return true;
-    if(node1 === null) return false;
-    if(node1.val !== node2.val) {
-        return false;
-    } else {
-        return SameTree(node1.left, node2.left) && SameTree(node1.right, node2.right)
-    }
+function help(A, B) {
+  if (B === null) return true
+  if (A === null || A.val !== B.val) return false
+  return help(A.left, B.left) && help(A.right, B.right)
 }
 ```
