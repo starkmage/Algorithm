@@ -6,23 +6,15 @@
 
 ---
 
-* 思路
+#### 思路1
 
 先进行二叉树路径的遍历，然后选择满足要求的路径。
 
 在遍历二叉树路径时，特别要注意代码中注释的地方。
 
-
----
+好理解，但是明显很笨的方法。
 
 ``` JS
-/* function TreeNode(x) {
-    this.val = x;
-    this.left = null;
-    this.right = null;
-} */
-
-
 function FindPath(root, expectNumber)
 {
     // write code here
@@ -46,4 +38,34 @@ function pathTraverse(root) {
         return x;
     })
 }
+```
+
+---
+
+#### 思路2
+
+直接在递归的时候同时求和
+
+``` js
+var pathSum = function(root, sum) {
+  const res = []
+  let help = function(node, path, sum) {
+    if (node !== null) {
+      path.push(node.val)
+      if (node.val !== sum && node.left === null && node.right === null) return
+      if (node.val === sum && node.left === null && node.right === null) res.push([...path])
+      if (node.left) {
+        help(node.left, path, sum - node.val)
+        // 被return回来，证明此路不通
+        path.pop()
+      }
+      if (node.right) {
+        help(node.right, path, sum - node.val)
+        path.pop()
+      }
+    }
+  }
+  help(root, [], sum)
+  return res
+};
 ```
