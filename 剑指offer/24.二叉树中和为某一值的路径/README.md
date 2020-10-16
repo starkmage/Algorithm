@@ -47,23 +47,15 @@ function pathTraverse(root) {
 直接在递归的时候同时求和
 
 ``` js
-var pathSum = function(root, sum) {
+var pathSum = function (root, sum) {
   const res = []
-  let help = function(node, path, sum) {
-    if (node !== null) {
-      path.push(node.val)
-      if (node.val !== sum && node.left === null && node.right === null) return
-      if (node.val === sum && node.left === null && node.right === null) res.push([...path])
-      if (node.left) {
-        help(node.left, path, sum - node.val)
-        // 被return回来，证明此路不通
-        path.pop()
-      }
-      if (node.right) {
-        help(node.right, path, sum - node.val)
-        path.pop()
-      }
-    }
+  let help = function (node, path, sum) {
+    if (node === null) return
+    path.push(node.val)
+    if (node.val === sum && node.left === null && node.right === null) res.push([...path])
+    help(node.left, path, sum - node.val)
+    help(node.right, path, sum - node.val)
+    path.pop()
   }
   help(root, [], sum)
   return res
