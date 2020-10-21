@@ -6,69 +6,20 @@
 
 ---
 
-* 常规思路，两次遍历
+#### 快慢指针，一次遍历
 
 ``` JS
-/*function ListNode(x){
-    this.val = x;
-    this.next = null;
-}*/
-
-
-function FindKthToTail(head, k)
-{
-    // write code here
-    if(head === null) return null;
-    let length = 1;
-    let current = head;
-    while(current.next !== null) {
-        current = current.next;
-        length++;
-    }
-    if(k > 0 && k <= length) {
-        let index = 1;
-        let res = head;
-        while(index < length - k + 1) {
-            res = res.next;
-            index++;
-        }
-        return res;
-    } else {
-        return null;
-    }
-}
-```
-
----
-
-* 快慢指针，一次遍历
-
-``` JS
-/*function ListNode(x){
-    this.val = x;
-    this.next = null;
-}*/
-
-
-function FindKthToTail(head, k)
-{
-    // write code here
-    if(head === null || k <= 0) return null;
-    let length = 1;
-    let current = head;
-    let res = null;
-    //res比current慢了一位，遍历条件应该为current !== null
-    while(current !== null) {
-        current = current.next;
-        if(length >= k) {
-            if(res === null) {
-                res = head;
-            } else {
-                res = res.next;
-            }
-        }
-        length++;
-    }
-    return res;
-}
+var getKthFromEnd = function(head, k) {
+  if (head === null) return null
+  let first = head, second = head
+  for (let i = 0; i < k; i++) {
+    first = first.next
+  }
+  if (first === null) return head
+  while (first.next) {
+    first = first.next
+    second = second.next
+  }
+  return second.next
+};
 ```
