@@ -25,42 +25,21 @@
 
 设置两个指针，第一个指针先走N步，当第一个指针遍历到头时，第二个指针的位置就是倒数第N个节点
 
-删除的时候，注意区分3种情况，并且要注意3种情况的先后顺序，否则会出现一些特殊情况的错误，比如只有1个节点的时候
-
 ``` js
-/**
- * Definition for singly-linked list.
- * function ListNode(val) {
- *     this.val = val;
- *     this.next = null;
- * }
- */
-/**
- * @param {ListNode} head
- * @param {number} n
- * @return {ListNode}
- */
 var removeNthFromEnd = function(head, n) {
   if (head === null) return null
-  let first = head
-  let second = head
-  let pre = null
-  let count = 1
-  while (first.next !== null) {
+  let first = head, second = head
+  for (let i = 0; i < n; i++) {
     first = first.next
-    if (count >= n) {
-      pre = second
-      second = second.next
-    }
-    count++
   }
-  if (n === count) {
-    head = head.next
-  } else if (n === 1) {
-    pre.next = null
-  } else {
-    pre.next = second.next
+  // 删除第一个节点的情况
+  if (first === null) return head.next
+  // 判断条件很重要
+  while (first.next) {
+    first = first.next
+    second = second.next
   }
+  second.next = second.next.next
   return head
 };
 ```
