@@ -30,11 +30,6 @@
 看到要求时间复杂度O(log(n))，必然是二分查找
 
 ``` js
-/**
- * @param {number[]} nums
- * @param {number} target
- * @return {number}
- */
 var search = function(nums, target) {
   if (nums.length === 0) return -1
   if (nums.length === 1) return nums[0] === target ? 0 : -1
