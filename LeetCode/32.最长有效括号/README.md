@@ -37,10 +37,6 @@
 6. 需要注意的是，如果一开始栈为空，第一个字符为左括号的时候我们会将其放入栈中，这样就不满足提及的「最后一个没有被匹配的右括号的下标」，为了保持统一，在一开始的时候往栈中放入一个值为 −1 的元素
 
 ``` js
-/**
- * @param {string} s
- * @return {number}
- */
 var longestValidParentheses = function(s) {
   //初始填充一个-1
   let stack = [-1]
