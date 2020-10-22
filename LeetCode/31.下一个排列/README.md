@@ -24,10 +24,6 @@
 3. 区间nums[i]到nums[nums.length-1]是降序的，所以排序的时候可以方便的两两交换完成排序
 
 ``` js
-/**
- * @param {number[]} nums
- * @return {void} Do not return anything, modify nums in-place instead.
- */
 var nextPermutation = function(nums) {
   let len = nums.length
   if (len === 0 || len === 1) return nums
