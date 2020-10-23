@@ -29,11 +29,6 @@
 利用二分查找依次找到下界和上界即可
 
 ``` js
-/**
- * @param {number[]} nums
- * @param {number} target
- * @return {number[]}
- */
 var searchRange = function(nums, target) {
   if (nums.length === 0) return [-1, -1]
   let res = [-1, -1]
@@ -63,5 +58,29 @@ var searchRange = function(nums, target) {
   }
   if (nums[right - 1] === target) res[1] = right - 1
   return res
+};
+```
+
+---
+
+``` js
+var searchRange = function(nums, target) {
+  let left = 0, right = nums.length - 1
+  
+  while (left < right) {
+    let center = Math.floor((left + right) / 2)
+    if (nums[center] < target) left = center + 1
+    else right = center
+  }
+  let start = nums[left] === target ? left : -1
+  left = 0
+  right = nums.length - 1
+  while (left < right) {
+    let center = Math.ceil((left + right) / 2)
+    if (nums[center] > target) right = center - 1
+    else left = center
+  }
+  let end = nums[right] === target ? right : -1
+  return [start, end]
 };
 ```
