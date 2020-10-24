@@ -33,10 +33,6 @@
 两个值记录遍历过程，temp 为跳到下一个有价值的点需要的步数，flag记录成功或者失败
 
 ``` js
-/**
- * @param {number[]} nums
- * @return {boolean}
- */
 var canJump = function(nums) {
   if (nums.length === 0 || nums.length === 1) return true
   let flag = true
@@ -51,5 +47,19 @@ var canJump = function(nums) {
     }
   }
   return flag
+};
+```
+
+更简单的写法
+
+``` js
+var canJump = function(nums) {
+  if (nums.length <= 1) return true
+  let need = 1
+  for (let i = nums.length - 2; i >= 0; i--) {
+    if (nums[i] >= need) need = 1
+    else need++
+  }
+  return need === 1 ? true : false
 };
 ```
