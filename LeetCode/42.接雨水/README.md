@@ -20,10 +20,6 @@
 找到 i 左右两侧最高的柱子，在这两个柱子中选一个矮的，减去 i 本身的高度，大于0的话就是 i 柱子存的水
 
 ``` js
-/**
- * @param {number[]} height
- * @return {number}
- */
 var trap = function(height) {
   let len = height.length
   //这些情况不可能存水
@@ -60,10 +56,6 @@ var trap = function(height) {
 只需要遍历一次，而且需要存储临时数据的空间更小
 
 ``` js
-/**
- * @param {number[]} height
- * @return {number}
- */
 var trap = function(height) {
   let len = height.length
   if (len === 0 || len === 1 || len === 2) return 0
