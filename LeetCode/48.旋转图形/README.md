@@ -59,10 +59,6 @@
 3. 至于为什么迭代终止条件为 i < n，这样不包括最后一个点，比如右上角的点，这是因为右上角的点在右列变成上行的时候，是第一个变换的，所以全都覆盖了
 
 ``` js
-/**
- * @param {number[][]} matrix
- * @return {void} Do not return anything, modify matrix in-place instead.
- */
 var rotate = function(matrix) {
   let m = 0
   let n = matrix.length - 1
