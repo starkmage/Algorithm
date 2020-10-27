@@ -36,31 +36,18 @@
 中序遍历，看得到的数组是不是升序数组，并且没有重复值
 
 ``` js
-/**
- * Definition for a binary tree node.
- * function TreeNode(val) {
- *     this.val = val;
- *     this.left = this.right = null;
- * }
- */
-/**
- * @param {TreeNode} root
- * @return {boolean}
- */
 var isValidBST = function(root) {
-  if (root === null) return true
   const res = []
-  midTraverse(root, res)
+  let help = function(node) {
+    if (node === null) return
+    help(node.left)
+    res.push(node.val)
+    help(node.right)
+  }
+  help(root)
   for (let i = 1; i < res.length; i++) {
-    if (res[i] <= res[i-1]) return false
+    if (res[i] <= res[i - 1]) return false
   }
   return true
 };
-
-function midTraverse(node, res) {
-  if (node === null) return
-  midTraverse(node.left, res)
-  res.push(node.val)
-  midTraverse(node.right, res)
-}
 ```
