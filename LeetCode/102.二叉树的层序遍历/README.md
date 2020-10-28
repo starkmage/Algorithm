@@ -31,16 +31,15 @@
 
 ``` js
 var levelOrder = function(root) {
-  let res = []
-  help(root, res, 0)
+  const res = []
+  let help = function(node, deep) {
+    if (node === null) return
+    if (deep > res.length) res.push([])
+    res[deep - 1].push(node.val)
+    help(node.left, deep + 1)
+    help(node.right, deep + 1)
+  }
+  help(root, 1)
   return res
 };
-
-function help(node, res, i) {
-  if (node === null) return
-  if (i >= res.length) res.push([])
-  res[i].push(node.val)
-  help(node.left, res, i + 1)
-  help(node.right, res, i + 1)
-}
 ```
