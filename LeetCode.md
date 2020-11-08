@@ -86,6 +86,10 @@
 
 [105.从前序与中序遍历序列构造二叉树](./LeetCode/105.从前序与中序遍历序列构造二叉树/README.md)
 
+[112.路径总和](./LeetCode/112.路径总和/README.md)
+
+[113.路径总和II](./LeetCode/112.路径总和II/README.md)
+
 [114.二叉树展开为链表](./LeetCode/114.二叉树展开为链表/README.md)
 
 [121.买卖股票的最佳时机](./LeetCode/121.买卖股票的最佳时机/README.md)
