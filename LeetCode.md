@@ -68,7 +68,7 @@
 
 [79.单词搜索](./LeetCode/79.单词搜索/README.md)
 
-[84.柱形图中最大的矩形](./LeetCode/84.柱形图中最大的矩形/README.md)
+[84.柱状图中最大的矩形](./LeetCode/84.柱状图中最大的矩形/README.md)
 
 [85.最大矩形](./LeetCode/85.最大矩形/README.md)
 
