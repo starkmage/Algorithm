@@ -10,6 +10,8 @@
 
 [5.最长回文子串](./LeetCode/5.最长回文子串/README.md)
 
+[7.整数反转](./LeetCode/7.整数反转/README.md)
+
 [10.正则表达式匹配](./LeetCode/10.正则表达式匹配/README.md)
 
 [11.盛最多水的容器](./LeetCode/11.盛最多水的容器/README.md)
