@@ -12,6 +12,8 @@
 
 [7.整数反转](./LeetCode/7.整数反转/README.md)
 
+[9.回文数](./LeetCode/9.回文数/README.md)
+
 [10.正则表达式匹配](./LeetCode/10.正则表达式匹配/README.md)
 
 [11.盛最多水的容器](./LeetCode/11.盛最多水的容器/README.md)
