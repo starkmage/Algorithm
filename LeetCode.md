@@ -36,6 +36,8 @@
 
 [23.合并K个升序链表](./LeetCode/23.合并K个升序链表/README.md)
 
+[26.删除排序数组中的重复项](./LeetCode/26.删除排序数组中的重复项/README.md)
+
 [31.下一个排列](./LeetCode/31.下一个排列/README.md)
 
 [32.最长有效括号](./LeetCode/32.最长有效括号/README.md)
