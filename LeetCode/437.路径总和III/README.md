@@ -43,17 +43,14 @@ root = [10,5,-3,3,2,null,11,3,-2,null,1], sum = 8
 ``` js
 var pathSum = function(root, sum) {
   if (root === null) return 0
-  let count = getSum(root, sum)
-  let leftCount = pathSum(root.left, sum)
-  let rightCount = pathSum(root.right, sum)
-  return count + leftCount + rightCount
+  let count = 0
+  var help = function(node, sum) {
+    if (node === null) return 0
+    if (node.val === sum) count++
+    help(node.left, sum - node.val)
+    help(node.right, sum - node.val)
+  }
+  help(root, sum)
+  return count + pathSum(root.left, sum) + pathSum(root.right, sum)
 };
-
-function getSum(node, sum) {
-  if (node === null) return 0
-  let now = node.val === sum ? 1 : 0
-  let leftSum = getSum(node.left, sum - node.val)
-  let rightSum = getSum(node.right, sum - node.val)
-  return now + leftSum + rightSum
-}
 ```
