@@ -8,40 +8,27 @@
 
 * 思路
 
-看到按大小排序首先想到了中序遍历，题目要求不能创建任何新的节点，在`ConvertHelp`里，借助`pre`标记链表中的上一个节点。
+看到按大小排序首先想到了中序遍历，题目要求不能创建任何新的节点，在`ConvertHelp`里，借助`pre`标记链表中的上一个节点。和LeetCode中114题很像，稍微多了一步而已。
 
 ``` js
-/* function TreeNode(x) {
-    this.val = x;
-    this.left = null;
-    this.right = null;
-} */
-
 function Convert(pRootOfTree)
 {
     // write code here
-    if (pRootOfTree === null) return null
-    ConvertHelp(pRootOfTree, null)
-    //回到链表起点
-    while (pRootOfTree.left !== null) {
-        pRootOfTree = pRootOfTree.left
-    }
-    return pRootOfTree
-}
-
-function ConvertHelp(current, pre) {
-    if (current.left) {
-        pre = ConvertHelp(current.left, pre)
-    }
-    
-    current.left = pre
-    if(pre) pre.right = current
-    pre = current
-    
-    if (current.right) {
-        pre = ConvertHelp(current.right, pre)
-    }
-    
-    return pre
+  let last = null
+  function reverseTree(node) {
+    if (node === null) return
+    reverseTree(node.right)
+    node.right = last
+    last = node
+    reverseTree(node.left)
+  }
+  reverseTree(pRootOfTree)
+  let cur = last, pre = null
+  while (cur) {
+    cur.left = pre
+    pre = cur
+    cur = cur.right
+  }
+  return last
 }
 ```
