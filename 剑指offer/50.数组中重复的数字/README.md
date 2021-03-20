@@ -15,21 +15,14 @@
 在遍历numbers的时候，将flag中numbers[i]位置的变为false，代表这个数字在numbers中遇到过了，下次如果再遇到，证明重复
 
 ``` js
-function duplicate(numbers, duplication)
-{
+function duplicate( numbers ) {
     // write code here
-    //这里要特别注意~找到任意重复的一个值并赋值到duplication[0]
-    //函数返回True/False
   let len = numbers.length
   let flag = Array(len).fill(true)
-  for (let i = 0; i < numbers.length; i++) {
-    if (flag[numbers[i]]) {
-      flag[numbers[i]] = false
-    } else {
-      duplication[0] = numbers[i]
-      return true
-    }
+  for (let n of numbers) {
+    if (flag[n]) flag[n] = false
+    else return n
   }
-  return false
+  return -1
 }
 ```
