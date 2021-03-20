@@ -11,27 +11,16 @@
 二叉搜索树的中序遍历得到的结果就是从小到大排列的，可以利用这一点。
 
 ``` JS
-/* function TreeNode(x) {
-    this.val = x;
-    this.left = null;
-    this.right = null;
-} */
-
-
 function KthNode(pRoot, k)
 {
-    // write code here
-    if(k <= 0) return null;
-    let array = [];
-    inOrderTraverse(pRoot, array);
-    return array[k-1];
+  const res = []
+  function tarverse(root) {
+    if (root === null) return
+    tarverse(root.left)
+    res.push(root)
+    tarverse(root.right)
+  }
+  tarverse(pRoot)
+  return res[k - 1]
 }
-
-
-function inOrderTraverse(root, array) {
-    if(root === null) return;
-    
-    inOrderTraverse(root.left, array);
-    array.push(root);
-    inOrderTraverse(root.right, array);
-}
+```
