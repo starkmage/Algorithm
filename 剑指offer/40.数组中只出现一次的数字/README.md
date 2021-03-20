@@ -26,6 +26,7 @@ function FindNumsAppearOnce(array)
     sum ^= value
   }
   
+  // x & (-x)本身的作用是得到最低位的1，
   let mask = sum & (-sum)
   let a = 0
   let b = 0
