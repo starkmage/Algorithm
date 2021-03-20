@@ -43,3 +43,27 @@ function FindContinuousSequence(sum)
   return result
 }
 ```
+
+优化一下
+``` js
+function FindContinuousSequence(sum)
+{
+  if (sum < 3) return []
+  let res = [], temp = []
+  let total = 0, start = 0
+  for (let i = 1; i <= Math.ceil(sum / 2); i++) {
+    total += i
+    temp.push(i)
+    start = 0
+    while (total > sum) {
+      total -= temp[start]
+      start++
+    }
+    temp = temp.slice(start)
+    if (total === sum) {
+      res.push([...temp])
+    }
+  }
+  return res
+}
+```
