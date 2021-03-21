@@ -45,3 +45,20 @@ var findDisappearedNumbers = function(nums) {
   return res
 };
 ```
+
+再提供一种相似的思路
+
+``` js
+var findDisappearedNumbers = function(nums) {
+  let len = nums.length
+  const flag = Array(len).fill(true)
+  for (let n of nums) {
+    if (flag[n - 1]) flag[n - 1] = false
+  }
+  const res = []
+  for (let i = 0; i < len; i++) {
+    if (flag[i]) res.push(i + 1)
+  }
+  return res
+};
+```
