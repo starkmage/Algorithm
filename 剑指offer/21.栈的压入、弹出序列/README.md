@@ -13,16 +13,21 @@
 ---
 
 ``` JS
-var validateStackSequences = function(pushed, popped) {
-  if (pushed.length !== popped.length) return false
-  const stack = []
-  while (pushed.length) {
-    stack.push(pushed.shift())
-    while (stack.length && stack[stack.length - 1] === popped[0]) {
-      stack.pop()
-      popped.shift()
+function IsPopOrder(pushV, popV)
+{
+  const help = []
+  let i = 0
+  for (let n of pushV) {
+    if (n !== popV[i]) {
+      help.push(n)
+    } else {
+      i++
+      while (help.length && help[help.length - 1] === popV[i]) {
+        help.pop()
+        i++
+      }
     }
   }
-  return stack.length === 0
-};
+  return help.length ? false : true
+}
 ```
