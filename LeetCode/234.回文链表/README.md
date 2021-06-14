@@ -29,30 +29,28 @@
 
 ``` js
 var isPalindrome = function(head) {
-  if (head === null || head.next === null) return true
-  let fast = head
-  let slow = head
-  // 1. 快慢指针找到链表的中点，是靠后的那个中点
-  while (fast) {
-    fast = fast.next ? fast.next.next : fast.next
+  if (!head || !head.next) return true
+  let fast = head, slow = head, pre = null
+  while (fast && fast.next) {
+    fast = fast.next.next
+    pre = slow
     slow = slow.next
   }
-  // 2. 反转后半部分链表
-  let cur = slow
-  let head1 = null
+  pre.next = null
+  let l2 = null, temp
   while (slow) {
-    slow = slow.next
-    cur.next = head1
-    head1 = cur
-    cur = slow
+    temp = slow.next
+    slow.next = l2
+    l2 = slow
+    slow = temp
   }
-  // 3. 判断是否相等
-  while (head1) {
-    if (head.val !== head1.val) return false
-    head = head.next
-    head1 = head1.next
+  let l1 = head
+  // l1必然不长于l2
+  while (l1 && l2) {
+    if (l1.val !== l2.val) return false
+    l1 = l1.next
+    l2 = l2.next
   }
-
   return true
 };
 ```
