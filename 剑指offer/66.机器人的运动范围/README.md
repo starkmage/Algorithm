@@ -23,35 +23,32 @@
 ```js
 function movingCount(threshold, rows, cols)
 {
-    // write code here
-  //创建一个二维数组，记录是否走过这个格子
-  let flag = []
-  for (let i = 0; i < rows; i++) {
-    flag.push([])
-    for (let j = 0; j < cols; j++) {
-      flag[i].push(false)
+  const getSum = function(s1, s2) {
+    const str = s1 + '' + s2
+    let sum = 0
+    for (let s of str) {
+      sum += Number(s)
     }
+    return sum
   }
-  return moveCount(threshold, rows, cols, flag, 0, 0)
-}
-
-function moveCount(threshold, rows, cols, flag, i, j) {
-  //递归终止条件：1.越界 2.走过这个格子
-  if (i < 0 || i >= rows || j < 0 || j >= cols || flag[i][j]) return 0
-  //标记这个格子就走过了
-  flag[i][j] = true
-  //求这个格子i,j的数位之和
-  let sum = 0
-  let str = i + '' + j
-  for (let k = 0; k < str.length; k++) {
-    sum += str[k] * 1
+  const flag = Array(rows).fill(0).map(item => Array(cols).fill(false))
+  let res = 0
+  const help = function(i, j) {
+    if (i < 0 || i >= rows || j < 0 || j >= cols || flag[i][j]) {
+      return
+    }
+    flag[i][j] = true
+    const sum = getSum(i, j)
+    if (sum > threshold) {
+      return
+    }
+    res++
+    help(i + 1, j)
+    help(i - 1, j)
+    help(i, j + 1)
+    help(i, j - 1)
   }
-  //递归终止条件：3.数位和超了
-  if (sum > threshold) return 0
-  //继续递归
-  return 1 + moveCount(threshold, rows, cols, flag, i+1, j) + 
-    moveCount(threshold, rows, cols, flag, i-1, j) + 
-    moveCount(threshold, rows, cols, flag, i, j+1) + 
-    moveCount(threshold, rows, cols, flag, i, j-1)
+  help(0, 0)
+  return res
 }
 ```
