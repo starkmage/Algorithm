@@ -47,17 +47,22 @@ function pathTraverse(root) {
 直接在递归的时候同时求和
 
 ``` js
-var pathSum = function (root, sum) {
-  const res = []
-  let help = function (node, path, sum) {
-    if (node === null) return
+function FindPath(root, expectNumber)
+{
+  const path = [], res = []
+  var help = function(node, sum) {
+    if (!node) return
     path.push(node.val)
-    if (node.val === sum && node.left === null && node.right === null) res.push([...path])
-    help(node.left, path, sum - node.val)
-    help(node.right, path, sum - node.val)
-    path.pop()
+    if (node.val === sum && !node.left && !node.right) {
+      res.push([...path])
+      return
+    }
+    help(node.left, sum - node.val)
+    if (node.left) path.pop()
+    help(node.right, sum - node.val)
+    if (node.right) path.pop()
   }
-  help(root, [], sum)
+  help(root, expectNumber)
   return res
-};
+}
 ```
