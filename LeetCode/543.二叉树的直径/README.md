@@ -29,17 +29,18 @@
 在递归的时候，我们在每一项后面长度 + 1，如果下一个节点是 null，那 + 1 不是不应该加吗？是这样处理的，如果为 null，返回 -1，相当于没加
 
 ``` js
+// 新思路，先求最长节点数，最后减1就行，更方便
 var diameterOfBinaryTree = function(root) {
-  let r = 0
-  help(root)
-  return r
-
-  function help(node, temp) {
-    if (node === null) return -1
-    let left = help(node.left) + 1
-    let right = help(node.right) + 1
-    r = Math.max(r, left + right)
-    return Math.max(left, right)
+  let max = 1
+  var help = function(node) {
+    if (!node) {
+      return 0
+    }
+    let left = help(node.left), right = help(node.right)
+    max = Math.max(max, 1 + left + right)
+    return 1 + Math.max(left, right)
   }
+  help(root)
+  return max - 1
 };
 ```
