@@ -50,18 +50,20 @@ for (int i = 0; i < len; i++) {
 
 ``` js
 var removeDuplicates = function(nums) {
-  let len = nums.length
-  if (len === 0) return 0
-  if (len === 1) return 1
-  let i = 1, j = 1
-  while (i < len) {
-    if  (nums[i] === nums[i - 1]) i++
-    else {
-      nums[j] = nums[i]
-      i++
-      j++
+  const len = nums.length
+  if (len <= 1) {
+    return len
+  }
+  let left = 0, right = 1
+  while (right < len) {
+    if (nums[left] === nums[right]) {
+      right++
+    } else {
+      left++
+      nums[left] = nums[right]
+      right++
     }
   }
-  return j
+  return left + 1
 };
 ```
