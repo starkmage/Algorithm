@@ -34,13 +34,15 @@
 
 ``` js
 var findDisappearedNumbers = function(nums) {
-  for (let value of nums) {
-    // 注意用 abs 呀，因为 value 可能已经被置为负数了
-    if (nums[Math.abs(value) - 1] > 0) nums[Math.abs(value) - 1] = -nums[Math.abs(value) - 1]
-  }
   const res = []
+  for (const n of nums) {
+    const index = Math.abs(n) - 1
+    nums[index] = -1 * Math.abs(nums[index])
+  }
   for (let i = 0; i < nums.length; i++) {
-    if (nums[i] > 0) res.push(i + 1)
+    if (nums[i] > 0) {
+      res.push(i + 1)
+    }
   }
   return res
 };
