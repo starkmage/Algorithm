@@ -43,3 +43,30 @@ var levelOrder = function(root) {
   return res
 };
 ```
+
+利用队列，BFS
+
+``` js
+var levelOrder = function(root) {
+  const res = [], queue = []
+  if (!root) {
+    return []
+  }
+  queue.push(root)
+  while (queue.length) {
+    const len = queue.length
+    res.push([])
+    for (let i = 0; i < len; i++) {
+      const node = queue.shift()
+      res[res.length - 1].push(node.val)
+      if (node.left) {
+        queue.push(node.left)
+      }
+      if (node.right) {
+        queue.push(node.right)
+      }
+    }
+  }
+  return res
+};
+```
