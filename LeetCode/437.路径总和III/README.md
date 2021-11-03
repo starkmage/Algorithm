@@ -54,3 +54,33 @@ var pathSum = function(root, sum) {
   return count + pathSum(root.left, sum) + pathSum(root.right, sum)
 };
 ```
+
+前缀法
+
+可以减少递归时的重复计算，具体思路看[这里](https://leetcode-cn.com/problems/path-sum-iii/solution/lu-jing-zong-he-iii-by-leetcode-solution-z9td/)
+
+``` js
+var pathSum = function (root, targetSum) {
+  const map = {};
+  map[0] = 1
+  return dfs(root, 0);
+
+  function dfs(node, cur) {
+    if (!node) {
+      return 0
+    }
+    cur += node.val
+    let ret = map[cur - targetSum] ?? 0
+    if (map[cur] !== undefined) {
+      map[cur]++
+    } else {
+      map[cur] = 1
+    }
+    ret += dfs(node.left, cur)
+    ret += dfs(node.right, cur)
+    map[cur]--
+
+    return ret
+  }
+}
+```
