@@ -104,7 +104,7 @@
 
 [121.买卖股票的最佳时机](./LeetCode/121.买卖股票的最佳时机/README.md)
 
-[121.买卖股票的最佳时机II](./LeetCode/121.买卖股票的最佳时机II/README.md)
+[122.买卖股票的最佳时机II](./LeetCode/122.买卖股票的最佳时机II/README.md)
 
 [124.二叉树中的最大路径和](./LeetCode/124.二叉树中的最大路径和/README.md)
 
