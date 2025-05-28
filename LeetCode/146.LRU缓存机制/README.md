@@ -35,84 +35,90 @@ cache.get(4);       // 返回  4
 不过 Vue 中好像没用到双向链表，用的是数组 keys 存储 key，然后同样的思路，调整 key 在数组 keys 的位置
 
 ``` js
-// 双向链表
 function ListNode(key, value) {
-  this.key = key
-  this.value = value
-  this.next = null
-  this.prev = null
+    this.key = key
+    this.value = value
+    this.next = null
+    this.prev = null
 }
 
-var LRUCache = function(capacity) {
-  this.capacity = capacity
-  this.count = 0
-  this.map = {}
-  this.head = new ListNode()
-  this.tail = new ListNode()
-  this.head.next = this.tail
-  this.head.prev = this.head
-};
-
-// 添加节点到头部
-LRUCache.prototype.addToHead = function(node) {
-  node.prev = this.head
-  node.next = this.head.next
-  this.head.next.prev = node
-  this.head.next = node
-}
-
-// 从链表中移除节点
-LRUCache.prototype.removeFromList = function(node) {
-  let tempPrev = node.prev
-  let tempNext = node.next
-  tempPrev.next = tempNext
-  tempNext.prev = tempPrev
-}
-
-// 将一个节点移到头部
-LRUCache.prototype.moveToHead = function(node) {
-  // 1. 先择出来
-  this.removeFromList(node)
-  // 2. 放到头部
-  this.addToHead(node)
-}
-
-// 获取 key 的 value
-LRUCache.prototype.get = function(key) {
-  const node = this.map[key]
-  if (node === undefined) return -1
-  this.moveToHead(node)
-  return node.value
-};
-
-// 添加 key - value 键值对
-LRUCache.prototype.put = function(key, value) {
-  let node = this.map[key]
-  if (node === undefined) {
-    let newNode = new ListNode(key, value)
-    this.map[key] = newNode
-    this.addToHead(newNode)
-    this.count++
-    if (this.count > this.capacity) {
-      this.removeLRUItem()
+function LRUCache(capacity) {
+    if (capacity <= 0) {
+        throw new Error('Capacity must be greater than 0')
     }
-  } else {
-    node.value = value
-    this.moveToHead(node)
-  }
-};
-
-// 从 map 删除最早没使用过的节点
-LRUCache.prototype.removeLRUItem = function() {
-  let node = this.popTail()
-  delete this.map[node.key]
-  this.count--
+    this.capacity = capacity
+    this.count = 0
+    this.map = {}
+    // 虚拟头节点
+    this.head = new ListNode()
+    // 虚拟尾节点
+    this.tail = new ListNode()
+    this.head.next = this.tail
+    this.tail.prev = this.head
 }
 
-// 从双向链表中删除最早没使用的节点
+LRUCache.prototype.addToHead = function(node) {
+    node.prev = this.head
+    node.next = this.head.next
+    this.head.next.prev = node
+    this.head.next = node
+}
+
+LRUCache.prototype.removeFromList = function(node) {
+    node.prev.next = node.next
+    node.next.prev = node.prev
+}
+
+LRUCache.prototype.moveToHead = function(node) {
+    this.removeFromList(node)
+    this.addToHead(node)
+}
+
+LRUCache.prototype.put = function(key, value) {
+    if (key === null || key === undefined) {
+        return
+    }
+    const node = this.map[key]
+    if (node === undefined) {
+        const newNode = new ListNode(key, value)
+        this.map[key] = newNode
+        this.addToHead(newNode)
+        this.count++
+        if (this.count > this.capacity) {
+            this.removeLRUItem()
+        }
+    } else {
+        node.value = value
+        this.moveToHead(node)
+    }
+}
+
+LRUCache.prototype.get = function(key) {
+    if (key === null || key === undefined) {
+        return -1
+    }
+    const node = this.map[key]
+    if (node === undefined) {
+        return -1
+    }
+    this.moveToHead(node)
+    
+    return node.value
+}
+
 LRUCache.prototype.popTail = function() {
-  let tailNode = this.tail.prev
-  this.removeFromList(tailNode)
-  return tailNode
+    const tailNode = this.tail.prev
+    this.removeFromList(tailNode)
+
+    return tailNode
+}
+
+LRUCache.prototype.removeLRUItem = function() {
+    if (this.count <= 0) {
+        return
+    }
+    const node = this.popTail()
+    delete this.map[node.key]
+    this.count--
 }
 ```
