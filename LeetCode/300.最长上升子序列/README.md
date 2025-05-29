@@ -22,6 +22,7 @@
 
 注意，题目中说的子序列，并不一定是连续的子序列
 
+方法1：动态规划
 dp[i] = max(dp[j]) + 1
 
 ``` js
@@ -35,5 +36,42 @@ var lengthOfLIS = function(nums) {
     }
   }
   return Math.max(...dp)
+};
+```
+
+方法2：二分查找
+https://leetcode.cn/problems/longest-increasing-subsequence/solutions/1033432/dong-tai-gui-hua-he-er-fen-cha-zhao-lian-x7dh/
+
+``` js
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var lengthOfLIS = function(nums) {
+  let output = 0
+  const top = []
+
+  for (const n of nums) {
+    let left = 0
+    let right = output
+
+    while (left < right) {
+      const mid = Math.floor((left + right) / 2)
+
+      if (top[mid] >= n) {
+        right = mid
+      } else {
+        left = mid + 1
+      }
+    }
+
+    if (left === output) {
+      output++
+    }
+
+    top[left] = n
+  }
+
+  return output
 };
 ```

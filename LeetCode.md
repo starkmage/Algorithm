@@ -110,6 +110,8 @@
 
 [128.最长连续序列](./LeetCode/128.最长连续序列/README.md)
 
+[129.求根节点到叶节点数字之和](./LeetCode/129.求根节点到叶节点数字之和/README.md)
+
 [136.只出现一次的数字](./LeetCode/136.只出现一次的数字/README.md)
 
 [139.单词拆分](./LeetCode/139.单词拆分/README.md)
