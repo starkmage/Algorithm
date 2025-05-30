@@ -18,9 +18,7 @@
 
 #### 滑动窗口
 
-核心思想：在 s 上滑动窗口，通过移动 right 指针不断扩张窗口。当窗口包含 t 全部所需的字符后，如果能收缩，我们就通过 left 收缩窗口直到得到最小窗口
-
-具体细节看注释
+滑动窗口，和No.576基本一样
 
 ``` js
 /**
@@ -29,54 +27,53 @@
  * @return {string}
  */
 var minWindow = function(s, t) {
-  let slen = s.length
-  let tlen = t.length
-  if (slen < tlen) return ''
-  let map = {}
-  let missType = 0
+  if (s.length < t.length) {
+    return ''
+  }
 
-  //首先统计s中的字符种类，和每个字符的个数
-  for (let i = 0; i < tlen; i++) {
-    let char = t[i]
-    if (map[char] === undefined) {
-      map[char] = 1
-      missType++
+  const strsMap = {}
+  let counter = 0
+
+  for (const str of t) {
+    if (strsMap[str]) {
+      strsMap[str]++
     } else {
-      map[char]++
+      strsMap[str] = 1
+      counter++
     }
   }
 
   let left = 0
-  let right = 0
-  let start = 0
-  let min = Number.MAX_VALUE
-  for (right ; right < slen; right++) {
-    let char = s[right]
-    //当map中找到这个字符，这个字符需要的个数减1
-    if (map[char] !== undefined) {
-      map[char]--
-    }
-    //当一个字符需要的个数为0了，需要的种类减1
-    if (map[char] === 0) {
-      missType--
-    }
+  let output = ''
 
-    //当missType为0，证明找齐了t中的字符
-    while (missType === 0) {
-      if (right - left + 1 < min) {
-        min = right - left + 1
-        //记录最短字符串的起始位置
-        start = left
+  for (let right = 0; right < s.length; right++) {
+    const str = s[right]
+    if (strsMap[str] !== undefined) {
+      strsMap[str]--
+
+      if (strsMap[str] === 0) {
+        counter--
       }
-      //注意，map[left]原本可能是负数哦，比如s在这一段有5个'a'，而t中有3个'a'，那么map[a] = -2
-      let char = s[left]
-      if (map[char] !== undefined) map[char]++
-      if (map[char] > 0) missType++
+    } 
+
+    while (counter === 0) {
+      if (right - left + 1 < output.length ||( output === '')) {
+        output = s.slice(left, right + 1)
+      }
+
+      const leftStr = s[left]
+      if (strsMap[leftStr] !== undefined) {
+        strsMap[leftStr]++
+
+        if (strsMap[leftStr] === 1) {
+          counter++
+        }
+      }
+
       left++
     }
   }
-  //如果min一直没变，证明根本没找到
-  if (min === Number.MAX_VALUE) return ''
-  return s.slice(start, start + min)
+
+  return output
 };
 ```
